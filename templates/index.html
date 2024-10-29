@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/la-musique.png" type="image/x-icon">
+    <title>Groupie Tracker</title>
+</head>
+<body>
+    <h1>Groupie Tracker</h1>
+    <div class="container">
+        {{range .}}
+        <div>
+            <a href="/Infos?id={{.ID}}">
+                <img loading="lazy" width="240" height="240" src="{{.Image}}">
+                <h4>{{.Name}}</h4>
+            </a>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

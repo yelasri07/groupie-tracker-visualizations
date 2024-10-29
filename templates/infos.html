@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/la-musique.png" type="image/x-icon">
+    <title>Groupie Tracker</title>
+</head>
+<body>
+    <button><a href="/">Home</a></button>
+    <h1>Infos</h1>
+    <div class="container">
+        <img width="240" height="240" src="{{.Image}}">
+        <p>Name : {{.Name}}</p>
+        <hr>
+        <p>Members :</p>
+        <ul>
+            {{range .Members}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <hr>
+        <p>Creation Date : {{.CreationDate}}</p>
+        <hr>
+        <p>First Album : {{.FirstAlbum}}</p>
+        <hr>
+        <p>Locations :</p>
+        <ul>
+            {{range .Loca.Locations}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <hr>
+        <p>Congert Dates :</p>
+        <ul>
+            {{range .ConDT.Dates}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <hr>
+
+        <p>Relations :</p>
+        <ul>
+            {{range $key, $values := .Rela.DatesLocations}}
+            <li>{{$key}}</li>
+            <ul>
+                {{range $value := $values}}
+                <li>{{$value}}</li>
+                {{end}}
+            </ul>
+            {{end}}
+        </ul>
+
+    </div>
+</body>
+</html>
