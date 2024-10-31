@@ -16,7 +16,7 @@ body{
 .gradient{
     width: 100%;
     background-color: #4b216c;
-    background-image: linear-gradient(to bottom, #592a7c, #371951);
+    background-image: linear-gradient(to bottom, #592a7c, #371952);
     height: 40vh;
     position: absolute;
     top: 0;

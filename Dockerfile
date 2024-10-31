@@ -1,12 +1,6 @@
 # Download the latest version of Go using Alpine, a lightweight Linux version
 FROM golang:alpine 
 
-# Labels to describe who worked on this image
-LABEL maintainer1="Youssef El Asri <elasriyoussef604@gmail.com>"
-LABEL maintainer2="Ismail Sayen <ismailsvn02@gmail.com>" 
-LABEL maintainer3="Chakir Benlafkih <Chakir.Benlafkih@gmail.com>"  
-LABEL version="1.0"
-LABEL description="Application web to get data using API." 
 
 # Set the working directory inside the container
 WORKDIR /groupie
