@@ -31,17 +31,24 @@ func GetForeignData(artist *database.Artists) error {
 	var dates database.Dates
 	var relations database.Relation
 
-	err := FetchAPI(artist.Locations, &locations)
-	if err != nil {
-		return err
-	}
-	err = FetchAPI(artist.CongertDates, &dates)
-	if err != nil {
-		return err
-	}
-	err = FetchAPI(artist.Relations, &relations)
-	if err != nil {
-		return err
+	errArtist := make(chan error, 3)
+
+	go func() {
+		errArtist <- FetchAPI(artist.Locations, &locations)
+	}()
+
+	go func() {
+		errArtist <- FetchAPI(artist.CongertDates, &dates)
+	}()
+
+	go func() {
+		errArtist <- FetchAPI(artist.Relations, &relations)
+	}()
+
+	for i := 0 ; i < 3 ; i++ {
+		if err := <- errArtist; err != nil {
+			return err
+		}
 	}
 
 	artist.Loca = locations

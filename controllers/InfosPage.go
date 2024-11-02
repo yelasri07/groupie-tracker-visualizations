@@ -1,9 +1,8 @@
 package controllers
 
 import (
-	"net/http"
-
 	"groupietracker/database"
+	"net/http"
 )
 
 func InfosHandler(w http.ResponseWriter, r *http.Request) {
