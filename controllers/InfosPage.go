@@ -1,8 +1,9 @@
 package controllers
 
 import (
-	"groupietracker/database"
 	"net/http"
+
+	"groupietracker/database"
 )
 
 func InfosHandler(w http.ResponseWriter, r *http.Request) {
@@ -14,13 +15,13 @@ func InfosHandler(w http.ResponseWriter, r *http.Request) {
 
 			err := FetchAPI("https://groupietrackers.herokuapp.com/api/artists/"+id, &artist)
 			if err != nil {
-				e := database.ErrorPage{Status: 500, Type: "Server Error"}
+				e := database.ErrorPage{Status: 404, Type: "User not found"}
 				RenderTempalte(w, "templates/error.html", e, http.StatusInternalServerError)
 				return
 			}
 
 			if artist.ID == 0 {
-				e := database.ErrorPage{Status: 400, Type: "Bad Request"}
+				e := database.ErrorPage{Status: 404, Type: "User not found"}
 				RenderTempalte(w, "templates/error.html", e, http.StatusBadRequest)
 				return
 			}

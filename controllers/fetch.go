@@ -45,8 +45,8 @@ func GetForeignData(artist *database.Artists) error {
 		errArtist <- FetchAPI(artist.Relations, &relations)
 	}()
 
-	for i := 0 ; i < 3 ; i++ {
-		if err := <- errArtist; err != nil {
+	for i := 0; i < 3; i++ {
+		if err := <-errArtist; err != nil {
 			return err
 		}
 	}
