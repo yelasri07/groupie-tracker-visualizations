@@ -27,33 +27,25 @@ func FetchAPI(url string, s any) error {
 }
 
 func GetForeignData(artist *database.Artists) error {
-	var locations database.Locations
-	var dates database.Dates
-	var relations database.Relation
-
-	errArtist := make(chan error, 3)
+	cha := make(chan error, 3)
 
 	go func() {
-		errArtist <- FetchAPI(artist.Locations, &locations)
+		cha <- FetchAPI(artist.Locations, &artist.Loca)
 	}()
 
 	go func() {
-		errArtist <- FetchAPI(artist.CongertDates, &dates)
+		cha <- FetchAPI(artist.CongertDates, &artist.ConDT)
 	}()
 
 	go func() {
-		errArtist <- FetchAPI(artist.Relations, &relations)
+		cha <- FetchAPI(artist.Relations, &artist.Rela)
 	}()
 
 	for i := 0; i < 3; i++ {
-		if err := <-errArtist; err != nil {
+		if err := <-cha; err != nil {
 			return err
 		}
 	}
-
-	artist.Loca = locations
-	artist.ConDT = dates
-	artist.Rela = relations
 
 	return nil
 }

@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -11,7 +10,6 @@ import (
 func AssetsHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		file, err := os.Stat(r.URL.Path[1:])
-		fmt.Println(r.URL.Path[1:])
 		if err != nil || file.IsDir() {
 			e := database.ErrorPage{Status: 404, Type: "Page Not Found"}
 			RenderTempalte(w, "templates/error.html", e, http.StatusNotFound)

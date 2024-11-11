@@ -50,7 +50,7 @@ body {
   padding: 20px 0;
   font-family: "Inter", serif;
 }
-.hero .imgUnder{
+.hero .imgUnder {
   border-radius: 20px;
   position: absolute;
   filter: blur(10px);
@@ -61,7 +61,7 @@ body {
   width: 100%;
 }
 
-.shadow-img{
+.shadow-img {
   position: relative;
   height: 240px;
   width: 240px;
@@ -110,12 +110,13 @@ li {
 }
 .sections h3 + ul {
   background-color: #ffffff14;
-  min-width: 214px;
-  height: 300px;
+  min-width: 220px;
+  height: 320px;
   border-radius: 12px;
   padding: 24px;
   overflow-y: auto;
   scrollbar-color: #4e3966;
+  margin-bottom: 20px;
 }
 .relations .rela {
   display: flex;
@@ -136,14 +137,14 @@ li {
   border-radius: 10px;
 }
 
-@keyframes img{
-  0%{
+@keyframes img {
+  0% {
     transform: translateY(0);
   }
-  50%{
+  50% {
     transform: translateY(-15px);
   }
-  100%{
+  100% {
     transform: translateY(0%);
   }
 }
@@ -166,27 +167,32 @@ li {
 @media screen and (max-width: 600px) {
   .relations .rela {
     flex-direction: column;
-    border: 1px dashed white;
+    border: 1px solid #4e3966;
     padding: 10px;
     border-radius: 10px;
     margin: 10px 0;
   }
-  h3{
+  h3 {
     text-align: center;
   }
-  .shadow-img{
+  .shadow-img {
     height: 125px;
     width: 125px;
   }
-  .shadow-img .imgUnder{
+  .shadow-img .imgUnder {
     top: 10px;
     left: 10px;
   }
-  .hero{
+  .hero {
     margin-top: 60px;
   }
   .hero h1 {
     font-size: 30px;
     font-weight: 900;
+  }
 }
+@media screen and (max-width: 320px){
+  .sections h3 + ul {
+    padding: 5px;
+  }
 }

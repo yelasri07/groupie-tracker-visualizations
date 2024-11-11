@@ -106,3 +106,12 @@ body{
     color: #fff;
     text-decoration: none;
 }
+
+@media screen and (max-width: 425px) {
+    .title h1{
+        font-size: 52px;
+    }
+    .title p{
+        font-size: 18px;
+    }
+}

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"strconv"
 
 	"groupietracker/database"
 )
@@ -11,18 +12,28 @@ func InfosHandler(w http.ResponseWriter, r *http.Request) {
 		id := r.URL.Query().Get("id")
 
 		if id != "" {
-			var artist database.Artists
 
-			err := FetchAPI("https://groupietrackers.herokuapp.com/api/artists/"+id, &artist)
+			ID, err := strconv.Atoi(id)
 			if err != nil {
 				e := database.ErrorPage{Status: 404, Type: "User not found"}
+				RenderTempalte(w, "templates/error.html", e, http.StatusNotFound)
+				return
+			}
+
+			id = strconv.Itoa(ID)
+
+			var artist database.Artists
+
+			err = FetchAPI("https://groupietrackers.herokuapp.com/api/artists/"+id, &artist)
+			if err != nil {
+				e := database.ErrorPage{Status: 500, Type: "Server Error"}
 				RenderTempalte(w, "templates/error.html", e, http.StatusInternalServerError)
 				return
 			}
 
 			if artist.ID == 0 {
 				e := database.ErrorPage{Status: 404, Type: "User not found"}
-				RenderTempalte(w, "templates/error.html", e, http.StatusBadRequest)
+				RenderTempalte(w, "templates/error.html", e, http.StatusNotFound)
 				return
 			}
 

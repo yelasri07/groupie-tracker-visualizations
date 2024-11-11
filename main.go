@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"groupietracker/controllers"
 	"log"
 	"net/http"
 	"os"
+
+	"groupietracker/controllers"
 )
 
 const port string = ":8082"

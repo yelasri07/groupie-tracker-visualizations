@@ -23,32 +23,37 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .content {
   text-align: center;
   margin-top: 50px;
 }
+
 h1 {
   font-size: 7.2vh;
   color: white;
 }
+
 a {
   color: white;
 }
+
 h2 {
   font-size: 6.4vh;
   color: white;
 }
+
 .content img {
-    width: 60vh;
-    transform: rotate(0deg); 
-    animation: rotateImage 6s infinite linear; 
+  width: 60vh;
+  transform: rotate(0deg);
+  animation: rotateImage 6s infinite linear;
+}
+
+@keyframes rotateImage {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes rotateImage {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
+}
